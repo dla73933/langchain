@@ -20,7 +20,7 @@ from langchain.vectorstores import FAISS
 from langchain.memory import StreamlitChatMessageHistory
 
 # AWS 프로파일 설정
-#os.environ["AWS_PROFILE"] = "igenip"
+os.environ["AWS_PROFILE"] = "igenip"
 # 로깅 설정
 logger.add("app.log", rotation="500 MB")
 
