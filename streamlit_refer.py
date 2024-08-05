@@ -170,7 +170,7 @@ def get_llm():
         )
     except Exception as e:
         logger.error(f"Error creating LLM: {str(e)}")
-        st.error("LLM 생성 중 오류가 발생했습니다.")
+        st.error(f"LLM 생성 중 오류가 발생했습니다: {str(e)}")
         return None
 
 def get_conversation_chain(vectorstore):
