@@ -3,6 +3,8 @@ import boto3
 from loguru import logger
 import os
 
+from langchain_community.llms import Bedrock
+from langchain_community.chat_models import BedrockChat
 from langchain.chains import ConversationalRetrievalChain
 from langchain_aws import ChatBedrock
 
@@ -110,7 +112,7 @@ def main():
                     st.error("죄송합니다. 응답 생성 중 오류가 발생했습니다. 다시 시도해 주세요.")
 
 def get_text(docs):
-    
+
     doc_list = []
     
     for doc in docs:
