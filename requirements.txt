@@ -10,5 +10,4 @@ pypdf
 loguru
 docx2txt
 boto3
-langchain
 langchain-community
