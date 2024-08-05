@@ -29,14 +29,14 @@ logger.add("app.log", rotation="500 MB")
 # Bedrock 클라이언트 생성 함수
 def get_bedrock_client():
     try:
-        client = boto3.client(
+        session = boto3.Session(profile_name='igenip')
+        client = session.client(
             service_name="bedrock-runtime",
-            region_name="us-east-1",
-            profile_name="igenip"  
+            region_name="us-east-1"
         )
-        client.list_endpoints()  # 클라이언트를 테스트하기 위해 간단한 API 호출
         return client
     except Exception as e:
+        logger.error(f"Error creating Bedrock client: {str(e)}")
         st.error(f"Bedrock 클라이언트를 생성하는 동안 오류가 발생했습니다: {str(e)}")
         return None
 
