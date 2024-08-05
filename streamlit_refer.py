@@ -1,6 +1,7 @@
 import streamlit as st
 import boto3
 from loguru import logger
+from dotenv import load_dotenv
 import os
 
 from langchain_community.llms import Bedrock
@@ -21,6 +22,8 @@ from langchain.memory import StreamlitChatMessageHistory
 
 # AWS 프로파일 설정
 os.environ["AWS_PROFILE"] = "igenip"
+AWS_ACCESS_KEY_ID = os.getenv("AWS_ACCESS_KEY_ID")
+AWS_SECRET_ACCESS_KEY = os.getenv("AWS_SECRET_ACCESS_KEY")
 
 # 로깅 설정
 logger.add("app.log", rotation="500 MB")
@@ -29,7 +32,9 @@ logger.add("app.log", rotation="500 MB")
 def get_bedrock_client():
     return boto3.client(
         service_name="bedrock-runtime",
-        region_name="us-east-1"
+        region_name="us-east-1",
+        aws_access_key_id=AWS_ACCESS_KEY_ID,
+        aws_secret_access_key=AWS_SECRET_ACCESS_KEY
     )
 
 def main():
