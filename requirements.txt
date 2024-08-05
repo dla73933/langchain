@@ -11,4 +11,3 @@ loguru
 docx2txt
 boto3
 langchain-community
-dotenv
