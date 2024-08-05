@@ -6,7 +6,6 @@ import os
 from langchain_community.llms import Bedrock
 from langchain_community.chat_models import BedrockChat
 from langchain.chains import ConversationalRetrievalChain
-from langchain_aws import ChatBedrock
 
 from langchain.document_loaders import PyPDFLoader
 from langchain.document_loaders import Docx2txtLoader
@@ -159,7 +158,7 @@ def get_vectorstore(text_chunks):
 def get_llm():
     try:
         bedrock_client = get_bedrock_client()
-        return ChatBedrock(
+        return BedrockChat(
             client=bedrock_client,
             model_id="anthropic.claude-3-sonnet-20240229-v1:0",
             model_kwargs={
