@@ -21,6 +21,8 @@ from langchain.memory import StreamlitChatMessageHistory
 
 # AWS 프로파일 설정
 os.environ["AWS_PROFILE"] = "igenip"
+
+
 # 로깅 설정
 logger.add("app.log", rotation="500 MB")
 
@@ -28,7 +30,8 @@ logger.add("app.log", rotation="500 MB")
 def get_bedrock_client():
     return boto3.client(
         service_name="bedrock-runtime",
-        region_name="us-east-1"
+        region_name="us-east-1",
+        profile_name="igenip"
     )
 
 def main():
